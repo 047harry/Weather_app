@@ -35,7 +35,8 @@ You need an API key from [OpenWeatherMap](https://home.openweathermap.org/users/
    ```bash
    git clone https://github.com/hemu0407/Weather-app.git
 cd weather-app
-const apiKey = 'YOUR_API_KEY';
+const apiKey = process.env.API_KEY;
+i uploded deployed it in versal so if you do the same give your environment variables in versal before deploying.
 ----------------------------------------------------------------------------------------------------
 
 weather-app/               
@@ -46,7 +47,9 @@ weather-app/
 ├── images/             
 │   ├── rain.png                   
 │   ├── humidity.png               
-│   └── wind.png               
+│   └── wind.png 
+├── api/
+│   ├──weather.js
 └── README.md                      
 
 -----------------------------------------------------------------------------------------------------
