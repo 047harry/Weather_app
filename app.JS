@@ -1,8 +1,6 @@
-const apiKey = '166eb97935a0adff7cee7611e532175b';
-
 async function getWeather() {
     const city = document.getElementById('city-input').value;
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    const url = `/api/weather?city=${city}`; // Call serverless API
 
     try {
         const response = await fetch(url);
@@ -31,25 +29,19 @@ function displayWeather(data) {
     document.querySelector(".humidity").innerText = data.main.humidity + `%`;
     document.getElementsByClassName('wind')[0].innerText = `${windSpeed} m/s`;
 
-    if(data.weather[0].main == "Clouds")
-    {
+    if(data.weather[0].main === "Clouds") {
         weatherIcon.src  = "images/clouds.png";
-    }else if(data.weather[0].main == "Clear")
-    {
-        weatherIcon.src = "images/clear.png"
-    }else if(data.weather[0].main == "Drizzle")
-    {
-        weatherIcon.src = "images/drizzle.png"
-    }else if(data.weather[0].main == "Mist")
-    {
-        weatherIcon.src = "images/mist.png"
-
+    } else if(data.weather[0].main === "Clear") {
+        weatherIcon.src = "images/clear.png";
+    } else if(data.weather[0].main === "Drizzle") {
+        weatherIcon.src = "images/drizzle.png";
+    } else if(data.weather[0].main === "Mist") {
+        weatherIcon.src = "images/mist.png";
     }
 
     document.querySelector(".weather-result").style.display = "block";
 }
 
-// Trigger getWeather() when Enter key is pressed
 document.getElementById('city-input').addEventListener('keydown', function(event) {
     if (event.key === 'Enter') {
         getWeather();
